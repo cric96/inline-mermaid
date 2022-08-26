@@ -4,12 +4,12 @@
   "description": "Transform and inline mermaid code in svg images!",
   "author": "cric96",
   "dependencies": {
-    "@mermaid-js/mermaid-cli": "^9.1.6",
-    "jsdom": "^20.0.0",
-    "path": "^0.12.7",
-    "phantomjs": "^2.1.7",
-    "temp": "^0.9.4",
-    "toml": "^3.0.0"
+    "@mermaid-js/mermaid-cli": "9.1.6",
+    "jsdom": "20.0.0",
+    "path": "0.12.7",
+    "phantomjs": "2.1.7",
+    "temp": "0.9.4",
+    "toml": "3.0.0"
   },
   "devDependecies": {
 	"semantic-release-preconfigured-conventional-commits": "1.1.10"
