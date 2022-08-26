@@ -1,0 +1,19 @@
+name: Transform and Inline Mermaid
+description: Transform and Inline Mermaid charts in SVG images!
+
+branding: 
+    icon: at-sign
+    color: blue
+
+inputs:
+
+runs:
+    using: composite
+    steps:
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 16
+        - name: Install depedencies
+          run: npm install
+        - name: Inline charts
+          run: node postprocessing.js
