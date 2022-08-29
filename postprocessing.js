@@ -28,11 +28,11 @@ async function getMarmaidFromToml(dirName) {
 // Constants 
 const baseRegex = core.getInput('file-regex', { required: false })
 const extensionAccepted = ".html"
-const baseFolder = core.getInput('root-folder', { required: false })
+const baseFolder = "exampleSite/build" //core.getInput('root-folder', { required: false })
 const tomlConfiguration = getMarmaidFromToml(core.getInput('config.toml', { required: false }) )
 
-core.info(`Configuration: \n regex = ${baseRegex}; \n base folder = ${baseFolder}; \n toml configuration file = ${tomlConfiguration}`)
-console.log(baseRegex)
+core.info(`Configuration: \n regex = ${baseRegex}; \n base folder = ${baseFolder}; \n toml configuration file = ${await tomlConfiguration}`)
+
 // Main functions
 /**
  * Retrieve all index.html (starting from `dirName`) 
