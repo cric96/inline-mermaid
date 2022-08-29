@@ -29,5 +29,7 @@ runs:
             node-version: 16
         - name: Install depedencies
           run: npm install
+          shell: bash
         - name: Inline charts
           run: node postprocessing.js
+          shell: bash
