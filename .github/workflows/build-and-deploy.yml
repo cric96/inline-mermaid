@@ -31,8 +31,6 @@ jobs:
           echo "Scripts update line: \"$USES\""
           echo "Computed version: \"${USES#*@}\""
           echo "::set-output name=version::${USES#*@}"
-      - name: Move to example site
-        run: cd exampleSite
 
       - name: Test action
         uses: ./action
