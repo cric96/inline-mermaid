@@ -31,6 +31,12 @@ const extensionAccepted = ".html"
 const baseFolder = "exampleSite/build" //core.getInput('root-folder', { required: false })
 const tomlConfiguration = getMarmaidFromToml(core.getInput('config.toml', { required: false }) )
 
+await readdir(process.cwd(), (err, files) => {
+  files.forEach(file => {
+    core.info(file);
+  })
+})
+
 core.info(`Configuration: \n regex = ${baseRegex}; \n base folder = ${baseFolder}; \n toml configuration file = ${await tomlConfiguration}`)
 
 // Main functions
@@ -70,7 +76,6 @@ async function getHtmlIndexes(dirName) {
    .map(file => `${dirName}/${file.name}`)
  return await localIndexes.concat(indexes)
 }
-
 /**
 * Giving an html page, inline each mermaid code into an svg
 * NB! It produces a side effect (i.e., it rewrites the `fileName` passed)
