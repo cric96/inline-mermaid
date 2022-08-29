@@ -1,7 +1,7 @@
 name: Transform and Inline Mermaid
 description: Transform and Inline Mermaid charts in SVG images!
 
-branding: 
+branding:
     icon: at-sign
     color: blue
 
@@ -23,4 +23,4 @@ inputs:
 
 runs:
   using: 'node16'
-  main: 'postprocessing.js'
+  main: 'dist/index.js'

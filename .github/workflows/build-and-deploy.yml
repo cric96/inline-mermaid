@@ -31,7 +31,8 @@ jobs:
           echo "Scripts update line: \"$USES\""
           echo "Computed version: \"${USES#*@}\""
           echo "::set-output name=version::${USES#*@}"
-
+      - name: Build action
+        run: npm install
       - name: Test action
         uses: ./action
         with:

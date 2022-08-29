@@ -6,6 +6,7 @@
   "dependencies": {
     "@actions/core": "^1.9.1",
     "@mermaid-js/mermaid-cli": "9.1.6",
+    "@vercel/ncc": "^0.34.0",
     "jsdom": "20.0.0",
     "path": "0.12.7",
     "phantomjs": "^1.9.19",
@@ -22,5 +23,8 @@
     "branches": [
       "main"
     ]
+  },
+  "scripts": {
+    "prepare": "ncc build postprocessing.js -o dist --license licenses.txt"
   }
 }
