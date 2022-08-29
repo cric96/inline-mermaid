@@ -10,10 +10,7 @@
     "phantomjs": "2.1.7",
     "temp": "0.9.4",
     "toml": "3.0.0"
-  },
-  "devDependecies": {
-	"semantic-release-preconfigured-conventional-commits": "1.1.10"
-  },
+  }
   "engines": {
   	"node": "16.17"
   }
