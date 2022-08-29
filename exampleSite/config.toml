@@ -1,0 +1,3 @@
+[[params.reveal_hugo.mermaid]]
+startOnLoad = false
+theme = "default"
