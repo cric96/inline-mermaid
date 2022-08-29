@@ -25,7 +25,8 @@ async function getMarmaidFromToml(dirName) {
 }
 
 // Constants 
-const baseName = "index.html"
+const baseRegex = "index"
+const extensionAccepted = ".html"
 const baseFolder = "build"
 const configName = "config.toml"
 const tomlConfiguration = getMarmaidFromToml(configName)
@@ -62,7 +63,8 @@ async function getHtmlIndexes(dirName) {
   let indexes = await (await Promise.all(indexesPromises)).flat();
   // Get all local index.html
   let localIndexes = files
-    .filter(file => file.name.includes("index.html")) // todo: probably it is better to use a regex here
+    .filter(file => file.name.i(baseRegex))
+    .filter(file => file.name.includes(extensionAccepted)) // todo: probably it is better to use a regex here
     .map(file => `${dirName}/${file.name}`)
   return await localIndexes.concat(indexes)
 }
