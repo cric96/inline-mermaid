@@ -9,10 +9,9 @@
     "@vercel/ncc": "^0.34.0",
     "jsdom": "20.0.0",
     "path": "0.12.7",
-    "phantomjs": "1.9.20",
+    "phantomjs-prebuilt": "^2.1.8",
     "temp": "0.9.4",
-    "toml": "3.0.0",
-    "phantomjs-prebuilt": "^2.1.8"
+    "toml": "3.0.0"
   },
   "devDependencies": {
     "semantic-release-preconfigured-conventional-commits": "1.1.10"
