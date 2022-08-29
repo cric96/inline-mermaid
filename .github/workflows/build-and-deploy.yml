@@ -11,9 +11,7 @@ jobs:
   test:
     strategy:
       matrix:
-        #os: [windows, macos, ubuntu]
-        os: [ubuntu]
-    
+        os: [windows, macos, ubuntu]
     runs-on: ${{ matrix.os }}-latest
     steps:
       - name: Checkout
@@ -33,11 +31,11 @@ jobs:
           echo "::set-output name=version::${USES#*@}"
       - name: Build action
         run: npm install
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
-        with:
-          limit-access-to-actor: true
-          limit-access-to-users: cric96
+      #- name: Setup upterm session
+      #  uses: lhotari/action-upterm@v1
+      #  with:
+      #    limit-access-to-actor: true
+      #    limit-access-to-users: cric96
       - name: Test action
         uses: ./
         with:
