@@ -66,7 +66,3 @@ runs:
     - name: Inline charts
       run: node postprocessing.js
       shell: bash
-      with:
-        file-regex: ${{inputs.file-regex}}
-        root-folder: ${{inputs.root-folder}}
-        config-file: ${{inputs.config-file}}
