@@ -64,5 +64,5 @@ runs:
       shell: bash
     
     - name: Inline charts
-      run: fileRegex=${{inputs.file-regex}} rootFolder=${{inputs.rootFolder}} configFile=${{inputs.configFile}} node postprocessing.js
+      run: fileRegex=${{inputs.file-regex}} rootFolder=${{inputs.root-folder}} configFile=${{inputs.config-file}} node postprocessing.js
       shell: bash
