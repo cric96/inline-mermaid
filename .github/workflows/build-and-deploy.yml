@@ -29,8 +29,6 @@ jobs:
           echo "Scripts update line: \"$USES\""
           echo "Computed version: \"${USES#*@}\""
           echo "::set-output name=version::${USES#*@}"
-      - name: Build action
-        run: npm install
       #- name: Setup upterm session
       #  uses: lhotari/action-upterm@v1
       #  with:
