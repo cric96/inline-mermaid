@@ -9,17 +9,17 @@ inputs:
   file-regex:
     description: The regex used to search for files where mermaid graph inlining will be applied
     default: "index"
-    required: false
+    required: true
 
   root-folder:
     description: The root folder used to search the file that match the file-regex passed
     default: "build"
-    required: false
+    required: true
 
   config-file:
     description: The file used to configure mermaid (toml)
     default: "config.toml"
-    required: false
+    required: true
 
 runs:
   using: composite

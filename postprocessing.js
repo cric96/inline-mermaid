@@ -26,10 +26,10 @@ async function getMarmaidFromToml(dirName) {
 }
 
 // Constants 
-const baseRegex = core.getInput('file-regex', { required: false })
+const baseRegex = core.getInput('file-regex')
 const extensionAccepted = ".html"
-const baseFolder = core.getInput('root-folder', { required: false })
-const tomlFile = core.getInput('config-file', { required: false })
+const baseFolder = core.getInput('root-folder')
+const tomlFile = core.getInput('config-file')
 core.info(`Configuration: \n regex = ${baseRegex}; \n base folder = ${baseFolder}; \n toml configuration file = ${await tomlFile}`)
 
 const tomlConfiguration = getMarmaidFromToml(tomlFile)
