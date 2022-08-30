@@ -1,35 +1,72 @@
-name: Transform and Inline Mermaid
-description: Transform and Inline Mermaid charts in SVG images!
+#name: Transform and Inline Mermaid
+#description: Transform and Inline Mermaid charts in SVG images!
 
+#branding:
+#  icon: at-sign
+#  color: blue
+
+#inputs:
+#  file-regex:
+#    description: The regex used to search for files where mermaid graph inlining will be applied
+#    required: true
+#    default: "index"
+
+#  root-folder:
+#    description: The root folder used to search the file that match the file-regex passed
+#    required: true
+#    default: "build"
+    
+#  config-file:
+#    description: The file used to configure mermaid (toml)
+#    required: true
+#    default: "config.toml"
+
+#runs:
+#  using: "composite"
+#  steps:
+    #- uses: actions/setup-node@v3
+    #  with:
+    #    node-version: 16
+#    - name: Log parameters
+#      run: echo ${{ inputs.fileRegex }}
+#      shell: bash
+    #- name: Install Dependecies
+    #  run: npm install
+    #  shell: bash
+    #- name: Inline charts
+    #  run: node postprocessing.js
+    #  shell: bash
+name: 'Transform and Inline Mermaid'
+description: 'ransform and Inline Mermaid charts in SVG images!'
 branding:
-    icon: at-sign
-    color: blue
-
+  icon: at-sign
+  color: blue
 inputs:
   file-regex:
     description: The regex used to search for files where mermaid graph inlining will be applied
-    default: "index"
     required: true
+    default: "index"
 
   root-folder:
     description: The root folder used to search the file that match the file-regex passed
-    default: "build"
     required: true
+    default: "build"
 
   config-file:
     description: The file used to configure mermaid (toml)
-    default: "config.toml"
     required: true
-
+    default: "config.toml"
 runs:
-  using: composite
+  using: "composite"
   steps:
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
     - name: Install Dependecies
       run: npm install
       shell: bash
+    
     - name: Inline charts
       run: node postprocessing.js
       shell: bash
+      with:
+        file-regex: ${{inputs.file-regex}}
+        root-folder: ${{inputs.root-folder}}
+        config-file: ${{inputs.config-file}}
