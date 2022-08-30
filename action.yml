@@ -31,5 +31,5 @@ runs:
       run: npm install
       shell: bash
     - name: Inline charts
-      run: node dist/index.js
+      run: node postprocessing.js
       shell: bash
