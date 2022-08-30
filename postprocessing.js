@@ -24,7 +24,7 @@ async function getMarmaidFromToml(dirName) {
     }
   }
 }
-
+console.log(process.env)
 // Constants 
 const baseRegex = core.getInput('file-regex', {required : true})
 const extensionAccepted = ".html"
