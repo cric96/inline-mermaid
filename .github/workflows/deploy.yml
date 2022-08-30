@@ -1,7 +1,7 @@
 name: Release GHA marketplace
 
 on: 
-  create
+  release: published
 
 jobs:
   release:
