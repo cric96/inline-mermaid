@@ -22,5 +22,11 @@ inputs:
     required: false
 
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: composite
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - name: Inline charts
+      run: node dist/index.js
+      shell: bash
