@@ -22,7 +22,8 @@ runs:
   using: "composite"
   steps:
     - name: Install Dependecies
-      run: cd ${{github.action_path}}; npm install
+      working-directory: ${{github.action_path}}
+      run: npm install
       shell: bash
     
     - name: Inline charts
