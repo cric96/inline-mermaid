@@ -3,3 +3,6 @@
 
 ### Inputs
 
+- file-regex
+- root-folder
+- config-file
