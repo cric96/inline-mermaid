@@ -22,9 +22,9 @@ runs:
   using: "composite"
   steps:
     - name: Install Dependecies
-      run: npm install
+      run: cd ${{github.action_path}}; npm install
       shell: bash
     
     - name: Inline charts
-      run: fileRegex=${{inputs.file-regex}} rootFolder=${{inputs.root-folder}} configFile=${{inputs.config-file}} node index.js
+      run: fileRegex=${{inputs.file-regex}} rootFolder=${{inputs.root-folder}} configFile=${{inputs.config-file}} node ${{github.action_path}}/index.js
       shell: bash
