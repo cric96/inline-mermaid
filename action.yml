@@ -7,7 +7,7 @@ inputs:
   file-regex:
     description: The regex used to search for files where mermaid graph inlining will be applied
     required: true
-    default: "^index\.html?$"
+    default: "^index\\.html?$"
 
   root-folder:
     description: The root folder used to search the files that match the file-regex passed
