@@ -64,7 +64,7 @@ async function getHtmlIndexes(dirName) {
  let indexes = await (await Promise.all(indexesPromises)).flat();
  // Get all local index.html
  let localIndexes = files
-   .filter(file => file.name.includes(baseRegex))
+   .filter(file => file.name.match(baseRegex) !== null)
    .filter(file => file.name.includes(extensionAccepted)) // todo: probably it is better to use a regex here
    .map(file => `${dirName}/${file.name}`)
  return await localIndexes.concat(indexes)
