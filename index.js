@@ -26,7 +26,6 @@ async function getMarmaidFromToml(dirName) {
 }
 // Constants
 const baseRegex = process.env.fileRegex //core.getInput('file-regex', {required : true})
-const extensionAccepted = ".html"
 const baseFolder = process.env.rootFolder //core.getInput('root-folder', {required : true})
 const tomlFile = process.env.configFile //process.env.configFilecore.getInput('config-file', {required : true})
 core.info(`Configuration: \n regex = ${baseRegex}; \n base folder = ${baseFolder}; \n toml configuration file = ${await tomlFile}`)
@@ -65,8 +64,7 @@ async function getHtmlIndexes(dirName) {
  // Get all local index.html
  let localIndexes = files
    .map(file => path.parse(`${dirName}/${file.name}`))
-   .filter(file => file.name.match(baseRegex) !== null)
-   .filter(file => file.ext.match(extensionAccepted) !== null) // todo: probably it is better to use a regex here
+   .filter(file => file.base.match(baseRegex) !== null)
    .map(file => `${dirName}/${file.base}`)
  return await localIndexes.concat(indexes)
 }
