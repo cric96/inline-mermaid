@@ -32,7 +32,13 @@ const baseRegex = process.env.fileRegex //core.getInput('file-regex', {required 
 const cssRegex = process.env.cssRegex
 const baseFolder = process.env.rootFolder //core.getInput('root-folder', {required : true})
 const tomlFile = process.env.configFile //process.env.configFilecore.getInput('config-file', {required : true})
-core.info(`Configuration: \n regex = ${baseRegex}; \n base folder = ${baseFolder}; \n toml configuration file = ${await tomlFile}`)
+core.info(
+  "Configuration:\n" +
+  `file-regex = ${baseRegex}\n` +
+  `css-regex = ${cssRegex}\n` +
+  `base folder = ${baseFolder}\n` +
+  `toml configuration file = ${await tomlFile}`
+)
 
 const cssFile = find(new RegExp(cssRegex), { basePath: baseFolder, isAbsoluteResultsPath: true })
 if(cssFile.length > 2) {
