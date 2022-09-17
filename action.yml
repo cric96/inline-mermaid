@@ -4,20 +4,25 @@ branding:
   icon: at-sign
   color: blue
 inputs:
+  root-folder:
+    description: The root folder used to search the files that match the file-regex and css-file-regex passed
+    required: true
+    default: "build"
+
   file-regex:
     description: The regex used to search for files where mermaid graph inlining will be applied. The regex is applied to the relative path! 
     required: true
     default: "index\\.html?$"
 
-  root-folder:
-    description: The root folder used to search the files that match the file-regex passed
-    required: true
-    default: "build"
-
   config-file:
     description: The file used to configure mermaid (toml)
     required: true
     default: "config.toml"
+
+  css-file-regex:
+    description: The regex used to search the css file. Only on CSS file can be used.
+    default: "css\\/.*.css$"
+
 runs:
   using: "composite"
   steps:
@@ -27,5 +32,5 @@ runs:
       shell: sh
 
     - name: Inline charts
-      run: fileRegex=${{inputs.file-regex}} rootFolder=${{inputs.root-folder}} configFile=${{inputs.config-file}} node ${GITHUB_ACTION_PATH}/index.js
+      run: fileRegex=${{inputs.file-regex}} rootFolder=${{inputs.root-folder}} configFile=${{inputs.config-file}} cssRegex=${{inputs.css-file-regex}} node ${GITHUB_ACTION_PATH}/index.js
       shell: sh

@@ -14,23 +14,31 @@ const readdir = promises.readdir
 const zip = (a, b) => a.map((k, i) => [k, b[i]]);
 
 /** Load the mermaid configuration from a reveal-hugo toml configuration */
-async function getMarmaidFromToml(dirName) {
+async function getMarmaidFromToml(dirName, cssFile) {
   const config = await promises.readFile(dirName)
   const data = await toml.parse(config.toString())
   return { 
     parseMMDOptions: { 
       backgroundColor: "trasparent", 
-      mermaidConfig : data.params.reveal_hugo.mermaid[0] 
+      mermaidConfig : data.params.reveal_hugo.mermaid[0],
+      myCss : cssFile
     }
   }
 }
+
+
 // Constants
 const baseRegex = process.env.fileRegex //core.getInput('file-regex', {required : true})
+const cssRegex = process.env.cssRegex
 const baseFolder = process.env.rootFolder //core.getInput('root-folder', {required : true})
 const tomlFile = process.env.configFile //process.env.configFilecore.getInput('config-file', {required : true})
 core.info(`Configuration: \n regex = ${baseRegex}; \n base folder = ${baseFolder}; \n toml configuration file = ${await tomlFile}`)
 
-const tomlConfiguration = getMarmaidFromToml(tomlFile)
+const cssFile = find(new RegExp(cssRegex), { basePath: baseFolder, isAbsoluteResultsPath: true })
+if(cssFile.length > 2) {
+  core.setFailed(`The regex: ${cssRegex} match more then one file: \n ${cssFile.join("\n")}`)
+}
+const tomlConfiguration = getMarmaidFromToml(tomlFile, cssFile.length == 1 ? cssFile[0] : undefined)
 // Main functions
 /**
  * Retrieve all index.html (starting from `dirName`) 

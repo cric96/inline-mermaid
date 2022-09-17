@@ -6,3 +6,4 @@
 - file-regex
 - root-folder
 - config-file
+- css-file-regex
