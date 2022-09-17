@@ -5,7 +5,7 @@ import path from 'path'
 import toml from 'toml'
 import core from '@actions/core'
 import { run } from "@mermaid-js/mermaid-cli"
-
+import find from 'recursive-path-finder-regexp'
 // Initialization
 temp.track() // manage clean of temporary file
 
@@ -42,7 +42,10 @@ const tomlConfiguration = getMarmaidFromToml(tomlFile)
   // get all index.html (in all sub directories)
  const files = await getHtmlIndexes(dirName)
  // load the js dom environment to find every .mermaid instances
- const fileLoaded = await Promise.all(files.map(file => JSDOM.fromFile(file)))
+ const fileLoaded = await Promise.all(files.map(file => {
+  console.log(file)
+  return JSDOM.fromFile(file)
+ }))
  // for each index, convert mermaid specification into plain svg code
  const transformations = zip(files, fileLoaded).map(async element => await inlineSvgInPage(...element))
  await Promise.all(transformations)
@@ -54,19 +57,7 @@ const tomlConfiguration = getMarmaidFromToml(tomlFile)
 * @returns {Array} a list of all index.html 
 */
 async function getHtmlIndexes(dirName) {
- // All local file starting from dirName
- const files = await readdir(dirName, { withFileTypes: true });
- // For each directory, another search starts
- let indexesPromises = files.filter(file => file.isDirectory())
-   .flatMap(file => getHtmlIndexes(`${dirName}/${file.name}`))
- // Get all the indexes found in the subdirs
- let indexes = await (await Promise.all(indexesPromises)).flat();
- // Get all local index.html
- let localIndexes = files
-   .map(file => path.parse(`${dirName}/${file.name}`))
-   .filter(file => file.base.match(baseRegex) !== null)
-   .map(file => `${dirName}/${file.base}`)
- return await localIndexes.concat(indexes)
+  return find(new RegExp(baseRegex), { basePath: dirName, isAbsoluteResultsPath: true });
 }
 /**
 * Giving an html page, inline each mermaid code into an svg
