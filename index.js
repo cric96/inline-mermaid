@@ -37,7 +37,7 @@ core.info(
   `file-regex = ${baseRegex}\n` +
   `css-regex = ${cssRegex}\n` +
   `base folder = ${baseFolder}\n` +
-  `toml configuration file = ${await tomlFile}`
+  `toml configuration file = ${tomlFile}`
 )
 
 const cssFile = find(new RegExp(cssRegex), { basePath: baseFolder, isAbsoluteResultsPath: true })
