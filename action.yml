@@ -21,7 +21,7 @@ inputs:
 
   css-file-regex:
     description: The regex used to search the css file. Only on CSS file can be used.
-    default: "css\\/.*\\.css$"
+    default: css\\/.*\\\.css$
 
 runs:
   using: "composite"
