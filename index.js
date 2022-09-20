@@ -26,7 +26,6 @@ async function getMarmaidFromToml(dirName, cssFile) {
   }
 }
 
-
 // Constants
 const baseRegex = process.env.fileRegex //core.getInput('file-regex', {required : true})
 const cssRegex = process.env.cssRegex
@@ -41,10 +40,10 @@ core.info(
 )
 
 const cssFile = find(new RegExp(cssRegex), { basePath: baseFolder, isAbsoluteResultsPath: true })
-if(cssFile.length > 2) {
+if(cssFile && cssFile.length > 2) {
   core.setFailed(`The regex: ${cssRegex} match more then one file: \n ${cssFile.join("\n")}`)
 }
-const tomlConfiguration = getMarmaidFromToml(tomlFile, cssFile.length == 1 ? cssFile[0] : undefined)
+const tomlConfiguration = getMarmaidFromToml(tomlFile, cssFile && cssFile.length == 1 ? cssFile[0] : undefined)
 // Main functions
 /**
  * Retrieve all index.html (starting from `dirName`) 
@@ -52,17 +51,18 @@ const tomlConfiguration = getMarmaidFromToml(tomlFile, cssFile.length == 1 ? css
  * (NB! rewrite the index that it find!)
  * @param {String} dirName - the root dir in which the search will happen
  */
- async function rewritePages(dirName) {
+async function rewritePages(dirName) {
   // get all index.html (in all sub directories)
- const files = await getHtmlIndexes(dirName)
- // load the js dom environment to find every .mermaid instances
- const fileLoaded = await Promise.all(files.map(file => {
-  console.log(file)
-  return JSDOM.fromFile(file)
- }))
- // for each index, convert mermaid specification into plain svg code
- const transformations = zip(files, fileLoaded).map(async element => await inlineSvgInPage(...element))
- await Promise.all(transformations)
+  const files = await getHtmlIndexes(dirName)
+  // load the js dom environment to find every .mermaid instances
+  const fileLoaded = await Promise.all(files.map(file => {
+    console.log(file)
+    return JSDOM.fromFile(file)
+  }))
+  // for each index, convert mermaid specification into plain svg code
+  for (const element of zip(files, fileLoaded)) {
+    await inlineSvgInPage(...element)
+  }
 }
 
 /**
@@ -81,18 +81,18 @@ async function getHtmlIndexes(dirName) {
 */
 async function inlineSvgInPage(fileName, page) {
  // Find all mermaid code
- const mermaidContent = page.window.document.querySelectorAll(".mermaid")
- const updates = Array.from(mermaidContent)
+  const mermaidContent = page.window.document.querySelectorAll(".mermaid")
+  const elementsToUpdate = Array.from(mermaidContent)
    // transfrom only the class that are not already transformed
    .filter(element => element.attributes["data-processed"] === undefined)
-   .map(async element => {
-     let svgContent = await getSvg(element) // convert the mermaid code to svg code
-     element.innerHTML = svgContent // put the svg code inside the mermaid div
-     element.setAttribute("data-processed", "true") // mark as already processed (mermaid.js will not process again)
-     element.setAttribute("pre-rendered", "true") // mark the div as pre-rendered
-   })
- await Promise.all(updates) // waiting all the transformation
- promises.writeFile(fileName, page.serialize()) // produce the side effect, i.e., writing the page with the svg inlined
+  
+  for(const element of elementsToUpdate) {
+    let svgContent = await getSvg(element) // convert the mermaid code to svg code
+    element.innerHTML = svgContent // put the svg code inside the mermaid div
+    element.setAttribute("data-processed", "true") // mark as already processed (mermaid.js will not process again)
+    element.setAttribute("pre-rendered", "true") // mark the div as pre-rendered
+  }
+  promises.writeFile(fileName, page.serialize()) // produce the side effect, i.e., writing the page with the svg inlined
 }
 
 /**
