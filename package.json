@@ -9,7 +9,7 @@
     "@vercel/ncc": "0.34.0",
     "jsdom": "20.0.0",
     "path": "0.12.7",
-    "puppeteer": "18.0.4",
+    "puppeteer": "18.0.5",
     "recursive-path-finder-regexp": "0.3.0",
     "temp": "0.9.4",
     "toml": "3.0.0"
