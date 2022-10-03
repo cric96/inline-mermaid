@@ -142,9 +142,9 @@ async function getSvg(element) {
   try {
     // write the mermaid code inside the temp file
     const svgContent = await promises.writeFile(htmlTemp.path, mermaidContent)
-    // call mermaid cli to transform mermaid code into svg
+        // call mermaid cli to transform mermaid code into svg
         .then(() => run(htmlTemp.path, svgTemp.path, mermaidConfig))
-    // get the svg content
+        // get the svg content
         .then(() => promises.readFile(
             svgFilePath.dir + '/' + svgFilePath.name + '-1.svg',
         ));
