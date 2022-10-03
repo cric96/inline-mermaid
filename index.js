@@ -57,8 +57,7 @@ if (cssFile && cssFile.length > 2) {
   );
 }
 const tomlConfiguration = getMarmaidFromToml(
-    tomlFile,
-  cssFile && cssFile.length == 1 ? cssFile[0] : undefined,
+    tomlFile, cssFile && cssFile.length == 1 ? cssFile[0] : undefined,
 );
 // Main functions
 /**
