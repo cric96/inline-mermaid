@@ -8,7 +8,7 @@ import {run} from '@mermaid-js/mermaid-cli';
 import find from 'recursive-path-finder-regexp';
 
 // Initialization
-// temp.track() // manage clean of temporary file
+temp.track() // manage clean of temporary file
 
 // Utility functions
 const zip = (a, b) => a.map((k, i) => [k, b[i]]);
@@ -159,4 +159,4 @@ async function getSvg(element) {
 }
 
 rewritePages(baseFolder)
-    .then((value) => console.log('Page rewriting complete!'));
+  .then((value) => console.log('Page rewriting complete!'));
