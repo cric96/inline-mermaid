@@ -37,5 +37,5 @@ runs:
       shell: sh
 
     - name: Inline charts
-      run: fileRegex=${{inputs.file-regex}} rootFolder=${{inputs.root-folder}} configFile=${{inputs.config-file}} cssRegex=${{inputs.css-file-regex}} node ${GITHUB_ACTION_PATH}/index.js
+      run: fileRegex=${{inputs.file-regex}} rootFolder=${{inputs.root-folder}} configFile=${{inputs.config-file}} cssRegex=${{inputs.css-file-regex}} configPath="${{inputs.config-path-regex}}" node ${GITHUB_ACTION_PATH}/index.js
       shell: sh
