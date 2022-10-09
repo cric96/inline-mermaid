@@ -20,7 +20,7 @@ inputs:
     default: "config.toml"
 
   config-path-regex:
-    description: The JSON Path regex to get the mermaid configuration
+    description: The JSON Path regex to get the mermaid configuration, please refear to https://github.com/JSONPath-Plus/JSONPath
     required: true
     default: "$.params.reveal_hugo.mermaid[0]"
 
