@@ -19,6 +19,11 @@ inputs:
     required: true
     default: "config.toml"
 
+  config-path-regex:
+    description: The JSON Path regex to get the mermaid configuration
+    required: true
+    default: "$.params.reveal_hugo.mermaid[0]"
+
   css-file-regex:
     description: The regex used to search the css file. Only on CSS file can be used.
     default: css\\/.*\\\.css$

@@ -1,5 +1,6 @@
 import {promises} from 'fs';
 import {JSDOM} from 'jsdom';
+import {JSONPath} from 'jsonpath-plus';
 import temp from 'temp';
 import path from 'path';
 import toml from 'toml';
@@ -8,24 +9,30 @@ import {run} from '@mermaid-js/mermaid-cli';
 import find from 'recursive-path-finder-regexp';
 
 // Initialization
-temp.track() // manage clean of temporary file
+temp.track(); // manage clean of temporary file
 
 // Utility functions
 const zip = (a, b) => a.map((k, i) => [k, b[i]]);
 
 /**
  * Load the mermaid configuration from a reveal-hugo toml configuration
- * @param {String} dirName - the folder in which the configuration is located
- * @param {String} cssFile - the cssFile used to the mermaid configuration
+ * @param {String} dirName
+ *  the folder in which the configuration is located
+ * @param {String} cssFile
+ *  the cssFile used to the mermaid configuration
+ * @param {String} configPath
+ *  the regex path of json-path-all to retrieve the mermaid configuration
  * @return {Object} the configuration for the mermaid cli
  */
-async function getMarmaidFromToml(dirName, cssFile) {
+async function getMarmaidFromToml(dirName, cssFile, configPath) {
   const config = await promises.readFile(dirName);
   const data = await toml.parse(config.toString());
+  const json = JSON.parse(JSON.stringify(data));
+  const mermaidJson = new JSONPath({path: configPath, json});
   return {
     parseMMDOptions: {
       backgroundColor: 'trasparent',
-      mermaidConfig: data.params.reveal_hugo.mermaid[0],
+      mermaidConfig: mermaidJson,
       myCss: cssFile,
     },
   };
@@ -36,6 +43,8 @@ const baseRegex = process.env.fileRegex;
 const cssRegex = process.env.cssRegex;
 const baseFolder = process.env.rootFolder;
 const tomlFile = process.env.configFile;
+const configPath = process.env.configPath;
+
 core.info(
     'Configuration:\n' +
   `file-regex = ${baseRegex}\n` +
@@ -56,9 +65,10 @@ if (cssFile && cssFile.length > 2) {
     The regex: ${cssRegex} match more then one file: \n  ${cssFile.join('\n')}`,
   );
 }
-const tomlConfiguration = getMarmaidFromToml(
-    tomlFile, cssFile && cssFile.length == 1 ? cssFile[0] : undefined,
-);
+
+const cssFilePassed = cssFile && cssFile.length == 1 ? cssFile[0] : undefined;
+const tomlConfiguration =
+  getMarmaidFromToml(tomlFile, cssFilePassed, configPath);
 // Main functions
 /**
  * Retrieve all index.html (starting from `dirName`)
@@ -159,4 +169,4 @@ async function getSvg(element) {
 }
 
 rewritePages(baseFolder)
-  .then((value) => console.log('Page rewriting complete!'));
+    .then((value) => console.log('Page rewriting complete!'));
