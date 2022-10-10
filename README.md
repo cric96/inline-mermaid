@@ -29,8 +29,9 @@ Repository examples:
 - [Inline HTML pages and deploy them in GHA pages](https://github.com/cric96/example-inline-mermaid)
 - [Building your site with Hugo and Inline the mermaid charts](https://github.com/cric96/Template-Hugo-Reveal-Slides)
 ## Configuration
+
 | Key | Value Information | Default |
-|-|-|
+| --- | --- | --- |
 |`file-regex` | ... | ... |
 |`root-folder` | ... | ... |
 |`config-file` | ... | ... |
