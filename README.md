@@ -4,7 +4,7 @@ Transform and Inline [Mermaid](https://mermaid-js.github.io/mermaid/#/) charts i
 ## Getting Started
 If you wanna inline your charts in a bunch of HTML pages, you just need to add this step in your GHA action configuration:
 
-```
+```yaml
 name: Action Example
 
 on:
