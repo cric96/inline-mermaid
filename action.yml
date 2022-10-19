@@ -31,11 +31,15 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Setup Nodejs
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16.8
     - name: Install Dependecies
       working-directory: ${{github.action_path}}
       run: npm install
       shell: sh
-
+    
     - name: Inline charts
       run: fileRegex=${{inputs.file-regex}} rootFolder=${{inputs.root-folder}} configFile=${{inputs.config-file}} cssRegex=${{inputs.css-file-regex}} configPath="${{inputs.config-path-regex}}" node ${GITHUB_ACTION_PATH}/index.js
       shell: sh
