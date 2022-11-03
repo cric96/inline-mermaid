@@ -23,7 +23,7 @@ jobs:
       uses: cric96/inline-mermaid@v1.8.0
     # ... Do whatever you want with new HTML pages with the SVG inlined :)
 ```
-With this configuration, the action will inline each mermaid code found in `build/*` in each `index.html` file found in `build/` (or in its subdirectories) using the configuration `config.toml` file selecting the mermaid configuration through `params.reveal_hugo.mermaid[0]` and used as a CSS file the first match of this regex `css\\/.*\\\.css$`. 
+With this configuration, the action will inline each mermaid code found in `build/*` in each `index.html` file found in `build/` (or in its subdirectories) using the configuration `config.toml` file selecting the mermaid configuration through `params.reveal_hugo.mermaid[0]` and using, as a CSS file, the first match of this regex: `css\\/.*\\\.css$`. 
 
 Repository examples:
 - [Inline HTML pages and deploy them in GHA pages](https://github.com/cric96/example-inline-mermaid)
@@ -32,9 +32,9 @@ Repository examples:
 
 | Key | Value Information | Default |
 | --- | --- | --- |
-|`file-regex` | ... | ... |
-|`root-folder` | ... | ... |
-|`config-file` | ... | ... |
-|`css-file-regex` | ... | ... |
-|`config-path-regex` | ... | ... |
+|`file-regex` | the regex used to match the file in which the bot will find mermaid graph and will inline it | `index\\.html?$` |
+|`root-folder` | the folder in which the bot will start the search for files that match the `file-regex` selected | `build` |
+|`config-file` | the file path in which the the mermaid configuration is stored. Currently it accepts only `toml` file. | `config.toml` |
+|`css-file-regex` | the regex used to find the css file style associated with the mermaid graph | `css\\/.*\\\.css$` |
+|`config-path-regex` | the [json-path](https://jsonpath-plus.github.io/JSONPath/docs/ts/) regex in which the mermaid configuration is stored | `$.params.reveal_hugo.mermaid[0]` |
 
