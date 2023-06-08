@@ -15,14 +15,11 @@ temp.track(); // manage clean of temporary file
 const zip = (a, b) => a.map((k, i) => [k, b[i]]);
 
 /**
- * Load the mermaid configuration from a reveal-hugo toml configuration
- * @param {String} dirName
- *  the folder in which the configuration is located
- * @param {String} cssFile
- *  the cssFile used to the mermaid configuration
- * @param {String} configPath
- *  the regex path of json-path-all to retrieve the mermaid configuration
- * @return {Object} the configuration for the mermaid cli
+ * Load the mermaid configuration from a reveal-hugo toml configuration.
+ * @param {String} dirName - The folder in which the configuration is located.
+ * @param {String} cssFile - The CSS file used for the mermaid configuration.
+ * @param {String} configPath - The regex path of json-path-all to retrieve the mermaid configuration.
+ * @return {Object} - The configuration for the mermaid CLI.
  */
 async function getMarmaidFromToml(dirName, cssFile, configPath) {
   const config = await promises.readFile(dirName);
@@ -70,11 +67,11 @@ const cssFilePassed = cssFile && cssFile.length == 1 ? cssFile[0] : undefined;
 const tomlConfiguration =
   getMarmaidFromToml(tomlFile, cssFilePassed, configPath);
 // Main functions
+// Main functions
 /**
- * Retrieve all index.html (starting from `dirName`)
- * and convert each mermaid code into svg code
- * (NB! rewrite the index that it find!)
- * @param {String} dirName - the root dir in which the search will happen
+ * Retrieve all index.html files starting from `dirName` and convert each mermaid code into SVG code.
+ * NB! Rewrites the index files it finds!
+ * @param {String} dirName - The root directory in which the search will occur.
  */
 async function rewritePages(dirName) {
   // get all index.html (in all sub directories)
@@ -91,10 +88,10 @@ async function rewritePages(dirName) {
 }
 
 /**
-* Retrieve all index.html (starting from `dirName`)
-* @param {String} dirName - the root dir in which the search will happen
-* @return {Array} a list of all index.html
-*/
+ * Retrieve all index.html files starting from `dirName`.
+ * @param {String} dirName - The root directory in which the search will occur.
+ * @return {Array} - A list of all index.html files.
+ */
 async function getHtmlIndexes(dirName) {
   return find(
       new RegExp(baseRegex),
@@ -105,11 +102,11 @@ async function getHtmlIndexes(dirName) {
   );
 }
 /**
-* Giving an html page, inline each mermaid code into an svg
-* NB! It produces a side effect (i.e., it rewrites the `fileName` passed)
-* @param {String} fileName - the file that will be transformed
-* @param {*} page - the js dom representation of the file passed
-*/
+ * Given an HTML page, inline each mermaid code into an SVG.
+ * NB! Produces a side effect by rewriting the `fileName` passed.
+ * @param {String} fileName - The file that will be transformed.
+ * @param {*} page - The JSDOM representation of the file passed.
+ */
 async function inlineSvgInPage(fileName, page) {
   // Find all mermaid code
   const mermaidContent = page.window.document.querySelectorAll('.mermaid');
@@ -132,11 +129,10 @@ async function inlineSvgInPage(fileName, page) {
 }
 
 /**
-* Giving a div with a mermaid code,
-* extract the svg representation using mermaid-cli
-* @param {HTMLElement} element - the div tag with the mermaid code
-* @return {String} - the svg representation of the given mermaid code
-*/
+ * Given a div with mermaid code, extract the SVG representation using mermaid-cli.
+ * @param {HTMLElement} element - The div tag with the mermaid code.
+ * @return {String} - The SVG representation of the given mermaid code.
+ */
 async function getSvg(element) {
   // get the configuration from hugo toml
   const mermaidConfig = await tomlConfiguration;
