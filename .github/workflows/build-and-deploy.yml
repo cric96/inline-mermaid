@@ -26,6 +26,12 @@ jobs:
           config-file: "exampleSite/config.toml"
 
   release:
+    permissions: 
+      contents: write
+      packages: write
+      actions: write
+      issues: write
+      pull-requests: write
     if: github.event_name == 'push'
     needs:
       - test
@@ -39,7 +45,7 @@ jobs:
           node-version-file: package.json
       - name: Semantic Release
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm install
