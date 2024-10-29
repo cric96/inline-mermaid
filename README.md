@@ -18,6 +18,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Setup Node
+      uses: actions/setup-node@v4.1.0
+        with:
+          # Set a version compatible with the Node version described in this package.json
+          node-version: 20.18
     # ... Do whatever you want to generate you HTML pages
     - name: Inline!
       uses: cric96/inline-mermaid@v1.8.0
