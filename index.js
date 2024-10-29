@@ -67,7 +67,6 @@ const cssFilePassed = cssFile && cssFile.length == 1 ? cssFile[0] : undefined;
 const tomlConfiguration =
   getMarmaidFromToml(tomlFile, cssFilePassed, configPath);
 // Main functions
-// Main functions
 /**
  * Retrieve all index.html files starting from `dirName` and convert each mermaid code into SVG code.
  * NB! Rewrites the index files it finds!
