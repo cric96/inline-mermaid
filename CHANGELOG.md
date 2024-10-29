@@ -1,3 +1,9 @@
+## [1.9.1](https://github.com/cric96/inline-mermaid/compare/1.9.0...1.9.1) (2024-10-29)
+
+### Documentation
+
+* declare the externalized dependency ([f64be88](https://github.com/cric96/inline-mermaid/commit/f64be8843e46b7ded67057273351e76b8f3776b3))
+
 ## [1.9.0](https://github.com/cric96/inline-mermaid/compare/v1.8.1...1.9.0) (2024-10-29)
 
 ### Dependency updates
