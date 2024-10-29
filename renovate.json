@@ -8,7 +8,7 @@
     {
       "description": "Trigger a minor update on some dependencies",
       "matchDepNames": [
-        "/^.*mermaid-js.*"
+        "/^.*mermaid-js.*/"
       ],
       "semanticCommitScope": "api-deps"
     }
