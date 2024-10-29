@@ -3,5 +3,14 @@
   "extends": [
     "local>DanySK/renovate-config:composite-action"
   ],
-  "assignees": ["cric96"]
+  "assignees": ["cric96"],
+  "packageRules": [
+    {
+      "description": "Trigger a minor update on some dependencies",
+      "matchDepNames": [
+        "/^.*mermaid-js/mermaid.*"
+      ],
+      "semanticCommitScope": "api-deps"
+    }
+  ]
 }
