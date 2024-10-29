@@ -23,11 +23,6 @@
   "engines": {
     "node": "20.18"
   },
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
   "scripts": {
     "_prepare": "ncc build postprocessing.js -o dist --license licenses.txt"
   }
