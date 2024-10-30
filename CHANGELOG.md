@@ -1,3 +1,17 @@
+## [1.10.0](https://github.com/cric96/inline-mermaid/compare/1.9.1...1.10.0) (2024-10-30)
+
+### Dependency updates
+
+* **api-deps:** update dependency @mermaid-js/mermaid-cli to v11 ([777cc3d](https://github.com/cric96/inline-mermaid/commit/777cc3d01054780ad811d4294166727d4ca36a97))
+* **deps:** update dependency eslint to v9.13.0 ([f091bee](https://github.com/cric96/inline-mermaid/commit/f091beef042af069555e0794f0b5e9bb76a9da48))
+* **deps:** update dependency jsdom to v25 ([6684397](https://github.com/cric96/inline-mermaid/commit/668439749b60465673a1b492b9775437987b3de3))
+* **deps:** update dependency jsonpath-plus to v10 ([86eb7dc](https://github.com/cric96/inline-mermaid/commit/86eb7dc9413251c91cb8db43f73b4b6c52df18b4))
+* **deps:** update dependency puppeteer to v23 ([f3b3a5c](https://github.com/cric96/inline-mermaid/commit/f3b3a5ccadadd6698c5130ef511c14febb591955))
+
+### Style improvements
+
+* remove useless a comment near main functions ([ccbe655](https://github.com/cric96/inline-mermaid/commit/ccbe65513d00faa2157eb2ad71a4015a38a993c4))
+
 ## [1.9.1](https://github.com/cric96/inline-mermaid/compare/1.9.0...1.9.1) (2024-10-29)
 
 ### Documentation
