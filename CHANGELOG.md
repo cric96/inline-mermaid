@@ -1,3 +1,17 @@
+## [1.11.0](https://github.com/cric96/inline-mermaid/compare/1.10.0...1.11.0) (2024-11-04)
+
+### Dependency updates
+
+* **api-deps:** update dependency @mermaid-js/mermaid-cli to v11.3.0 ([a09b9a0](https://github.com/cric96/inline-mermaid/commit/a09b9a07bf35b6a166d9440c1c618afa8fbad5ac))
+* **deps:** update dependency puppeteer to v23.6.1 ([464fcd3](https://github.com/cric96/inline-mermaid/commit/464fcd3e0c7be3f90a7b19a7435ed68c1c28f143))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.113 ([cf17c73](https://github.com/cric96/inline-mermaid/commit/cf17c73c05293352cb1638598ecbd124952687a2))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.114 ([14dbb54](https://github.com/cric96/inline-mermaid/commit/14dbb5485886788a95f0e3e7a9a2202d4ab6d59e))
+* **deps:** update node.js to v22 ([e13dbfd](https://github.com/cric96/inline-mermaid/commit/e13dbfdf09b17ed29f24405ef90b09a6f2088f08))
+
+### Build and continuous integration
+
+* **deps:** update dependency macos github actions runner to v14 ([9d36be5](https://github.com/cric96/inline-mermaid/commit/9d36be53688deefbcb66811c1aadebb1c0f277bf))
+
 ## [1.10.0](https://github.com/cric96/inline-mermaid/compare/1.9.1...1.10.0) (2024-10-30)
 
 ### Dependency updates
