@@ -1,3 +1,10 @@
+## [1.12.0](https://github.com/cric96/inline-mermaid/compare/1.11.0...1.12.0) (2024-11-07)
+
+### Dependency updates
+
+* **api-deps:** update dependency @mermaid-js/mermaid-cli to v11.4.0 ([3d57cb7](https://github.com/cric96/inline-mermaid/commit/3d57cb7aae57e3de35a6440428791e52a0238fa3))
+* **deps:** update dependency eslint to v9.14.0 ([3c8ca34](https://github.com/cric96/inline-mermaid/commit/3c8ca3496e57f9711944a4f0ce63df8f9118bf41))
+
 ## [1.11.0](https://github.com/cric96/inline-mermaid/compare/1.10.0...1.11.0) (2024-11-04)
 
 ### Dependency updates
