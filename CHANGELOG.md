@@ -1,3 +1,19 @@
+## [1.13.0](https://github.com/cric96/inline-mermaid/compare/1.12.0...1.13.0) (2024-12-05)
+
+### Dependency updates
+
+* **api-deps:** update dependency @mermaid-js/mermaid-cli to v11.4.1 ([#334](https://github.com/cric96/inline-mermaid/issues/334)) ([205ab4d](https://github.com/cric96/inline-mermaid/commit/205ab4d99b3d22be789f3813412df88922189f77))
+* **deps:** update dependency @vercel/ncc to v0.38.3 ([#328](https://github.com/cric96/inline-mermaid/issues/328)) ([dbc9aa9](https://github.com/cric96/inline-mermaid/commit/dbc9aa942f36e5b995350361b2ca87d716d7f86a))
+* **deps:** update dependency eslint to v9.15.0 ([#329](https://github.com/cric96/inline-mermaid/issues/329)) ([969c0ff](https://github.com/cric96/inline-mermaid/commit/969c0ff875ce75899d48d15763759feb7e21c5e0))
+* **deps:** update dependency eslint to v9.16.0 ([#332](https://github.com/cric96/inline-mermaid/issues/332)) ([76d701f](https://github.com/cric96/inline-mermaid/commit/76d701fbeff56a05b9f652cf773abc2389a3db35))
+* **deps:** update dependency jsonpath-plus to v10.2.0 ([#330](https://github.com/cric96/inline-mermaid/issues/330)) ([63a5672](https://github.com/cric96/inline-mermaid/commit/63a56724435b83ff5ca120f2f24706de9d057461))
+* **deps:** update dependency puppeteer to v23.7.0 ([#324](https://github.com/cric96/inline-mermaid/issues/324)) ([6b4cabd](https://github.com/cric96/inline-mermaid/commit/6b4cabd530b3a838749fda3ff509d63b2dd7733a))
+* **deps:** update dependency puppeteer to v23.7.1 ([#325](https://github.com/cric96/inline-mermaid/issues/325)) ([2dcb26f](https://github.com/cric96/inline-mermaid/commit/2dcb26f37ab7910e8f02b9e4b0d074c5b763d281))
+* **deps:** update dependency puppeteer to v23.8.0 ([#327](https://github.com/cric96/inline-mermaid/issues/327)) ([1b80768](https://github.com/cric96/inline-mermaid/commit/1b80768d4cd290289f56e409aa86860f24981f26))
+* **deps:** update dependency puppeteer to v23.9.0 ([#331](https://github.com/cric96/inline-mermaid/issues/331)) ([9027787](https://github.com/cric96/inline-mermaid/commit/90277874cdf09ef52c7f8c43e011b0cb1156a86b))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.115 ([#326](https://github.com/cric96/inline-mermaid/issues/326)) ([8a30be6](https://github.com/cric96/inline-mermaid/commit/8a30be66be49ee1ab6d10c9f575e219aa5dca415))
+* **deps:** update node.js to 22.12 ([#333](https://github.com/cric96/inline-mermaid/issues/333)) ([36188fa](https://github.com/cric96/inline-mermaid/commit/36188fa03147aff0993d17eeb1d7656fab28e784))
+
 ## [1.12.0](https://github.com/cric96/inline-mermaid/compare/1.11.0...1.12.0) (2024-11-07)
 
 ### Dependency updates
