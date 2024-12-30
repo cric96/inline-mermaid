@@ -1,3 +1,22 @@
+## [1.14.1](https://github.com/cric96/inline-mermaid/compare/1.14.0...1.14.1) (2024-12-30)
+
+### Dependency updates
+
+* **deps:** update dependency eslint to v9.17.0 ([#342](https://github.com/cric96/inline-mermaid/issues/342)) ([166a900](https://github.com/cric96/inline-mermaid/commit/166a90092d08062d7e6c3bf27a1f7fbcc2698c4d))
+* **deps:** update dependency puppeteer to v23.10.0 ([#336](https://github.com/cric96/inline-mermaid/issues/336)) ([50cd261](https://github.com/cric96/inline-mermaid/commit/50cd2613dac0d9dded186e83d68609438bc9cc2e))
+* **deps:** update dependency puppeteer to v23.10.1 ([#337](https://github.com/cric96/inline-mermaid/issues/337)) ([332f8f7](https://github.com/cric96/inline-mermaid/commit/332f8f7cd0bc53aa8187aae5124dd24e58e44cc9))
+* **deps:** update dependency puppeteer to v23.10.2 ([#339](https://github.com/cric96/inline-mermaid/issues/339)) ([54496e7](https://github.com/cric96/inline-mermaid/commit/54496e7d8dbeb8b9a0d350b79406b39e77983919))
+* **deps:** update dependency puppeteer to v23.10.3 ([#340](https://github.com/cric96/inline-mermaid/issues/340)) ([c35069f](https://github.com/cric96/inline-mermaid/commit/c35069f19c7771d22b34d58476a0fc4e231348c2))
+* **deps:** update dependency puppeteer to v23.10.4 ([#341](https://github.com/cric96/inline-mermaid/issues/341)) ([280873c](https://github.com/cric96/inline-mermaid/commit/280873c3a93a99f1446ca26c25bd1c49f31f542f))
+* **deps:** update dependency puppeteer to v23.11.0 ([#343](https://github.com/cric96/inline-mermaid/issues/343)) ([a067ae6](https://github.com/cric96/inline-mermaid/commit/a067ae60f6ae9def02971f8e19b8d51f1408d80b))
+* **deps:** update dependency puppeteer to v23.11.1 ([#344](https://github.com/cric96/inline-mermaid/issues/344)) ([f1b9a42](https://github.com/cric96/inline-mermaid/commit/f1b9a42b2aefbd8ecfc1d87c2796f2068f28cfe8))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.116 ([#338](https://github.com/cric96/inline-mermaid/issues/338)) ([d6b515a](https://github.com/cric96/inline-mermaid/commit/d6b515a61be4279b136446d46c040a9483d2c789))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.117 ([#345](https://github.com/cric96/inline-mermaid/issues/345)) ([4feed03](https://github.com/cric96/inline-mermaid/commit/4feed03041b36f05b98ce402922ec32d5ccfb49d))
+
+### Bug Fixes
+
+* try to disable the puppetteer sandbox ([5c63619](https://github.com/cric96/inline-mermaid/commit/5c636199ae3e7b918b34106c78ad2520094cad10))
+
 ## [1.14.0](https://github.com/cric96/inline-mermaid/compare/1.13.0...1.14.0) (2024-12-06)
 
 ### Dependency updates
