@@ -135,6 +135,10 @@ async function inlineSvgInPage(fileName, page) {
 async function getSvg(element) {
   // get the configuration from hugo toml
   const mermaidConfig = await tomlConfiguration;
+  // Disable the Puppeteer sandbox
+  mermaidConfig.puppeteerConfig = {
+    args: ["--no-sandbox"]
+  };  
   // temp file for file input (mermaid code)
   const htmlTemp = await temp.open({prefix: 'html-append', suffix: '.md'});
   // temp file for file output (svg)
