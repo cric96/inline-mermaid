@@ -21,7 +21,7 @@
     "semantic-release-preconfigured-conventional-commits": "1.1.122"
   },
   "engines": {
-    "node": "22.13"
+    "node": "22.14"
   },
   "scripts": {
     "_prepare": "ncc build postprocessing.js -o dist --license licenses.txt"
