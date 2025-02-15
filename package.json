@@ -18,7 +18,7 @@
   "devDependencies": {
     "eslint": "9.20.1",
     "eslint-config-google": "0.14.0",
-    "semantic-release-preconfigured-conventional-commits": "1.1.122"
+    "semantic-release-preconfigured-conventional-commits": "1.1.123"
   },
   "engines": {
     "node": "22.14"
