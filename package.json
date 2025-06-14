@@ -5,7 +5,7 @@
   "author": "cric96",
   "dependencies": {
     "@actions/core": "1.11.1",
-    "@mermaid-js/mermaid-cli": "11.4.2",
+    "@mermaid-js/mermaid-cli": "11.4.3",
     "@vercel/ncc": "0.38.3",
     "jsdom": "26.1.0",
     "jsonpath-plus": "10.3.0",
