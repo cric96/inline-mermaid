@@ -1,3 +1,19 @@
+## [1.17.0](https://github.com/cric96/inline-mermaid/compare/1.16.0...1.17.0) (2025-08-02)
+
+### Dependency updates
+
+* **api-deps:** update dependency @mermaid-js/mermaid-cli to v11.9.0 ([#400](https://github.com/cric96/inline-mermaid/issues/400)) ([304ecd5](https://github.com/cric96/inline-mermaid/commit/304ecd51be63ce318c2c27acf0f01e62670c1061))
+* **deps:** update dependency eslint to v9.30.0 ([#392](https://github.com/cric96/inline-mermaid/issues/392)) ([b44dc91](https://github.com/cric96/inline-mermaid/commit/b44dc91188524a77db29e308bd6a6b01aea70420))
+* **deps:** update dependency eslint to v9.30.1 ([#394](https://github.com/cric96/inline-mermaid/issues/394)) ([23498e4](https://github.com/cric96/inline-mermaid/commit/23498e426616cceea41d965bb51fd5f3c5000525))
+* **deps:** update dependency eslint to v9.31.0 ([#396](https://github.com/cric96/inline-mermaid/issues/396)) ([206971a](https://github.com/cric96/inline-mermaid/commit/206971af7f7442a7c9f6793408c3295697f0eec3))
+* **deps:** update dependency eslint to v9.32.0 ([#399](https://github.com/cric96/inline-mermaid/issues/399)) ([192a75f](https://github.com/cric96/inline-mermaid/commit/192a75ffac3642a678043960bb23c33dbef65282))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.134 ([#391](https://github.com/cric96/inline-mermaid/issues/391)) ([24d4ab2](https://github.com/cric96/inline-mermaid/commit/24d4ab20c8fa318b36a7885d372e047b5a53385b))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.135 ([#393](https://github.com/cric96/inline-mermaid/issues/393)) ([bc84c71](https://github.com/cric96/inline-mermaid/commit/bc84c7142b61f82821b2bbb448014427448bd70c))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.136 ([#395](https://github.com/cric96/inline-mermaid/issues/395)) ([548ee1b](https://github.com/cric96/inline-mermaid/commit/548ee1bfc8713fc6a3937ed58456f0d41c5266e9))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.137 ([#397](https://github.com/cric96/inline-mermaid/issues/397)) ([aae4ff8](https://github.com/cric96/inline-mermaid/commit/aae4ff87b4262eaee66940a0404979163f8f42cb))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.138 ([#398](https://github.com/cric96/inline-mermaid/issues/398)) ([beaf126](https://github.com/cric96/inline-mermaid/commit/beaf1260b714e4477f27277a9a027cc19f5a0f93))
+* **deps:** update node.js to 22.17 ([#390](https://github.com/cric96/inline-mermaid/issues/390)) ([f39e887](https://github.com/cric96/inline-mermaid/commit/f39e8877db2ea91d3f529409a07009037b468ac8))
+
 ## [1.16.0](https://github.com/cric96/inline-mermaid/compare/1.15.0...1.16.0) (2025-06-22)
 
 ### Dependency updates
