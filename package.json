@@ -16,7 +16,7 @@
     "toml": "3.0.0"
   },
   "devDependencies": {
-    "eslint": "9.35.0",
+    "eslint": "9.36.0",
     "eslint-config-google": "0.14.0",
     "semantic-release-preconfigured-conventional-commits": "1.1.145"
   },
