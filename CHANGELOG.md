@@ -1,3 +1,17 @@
+## [1.19.0](https://github.com/cric96/inline-mermaid/compare/1.18.0...1.19.0) (2025-09-28)
+
+### Dependency updates
+
+* **api-deps:** update dependency @mermaid-js/mermaid-cli to v11.12.0 ([#423](https://github.com/cric96/inline-mermaid/issues/423)) ([568470e](https://github.com/cric96/inline-mermaid/commit/568470e5b670e92ce5db99d2a57d5a5b5fba481e))
+* **deps:** update dependency @vercel/ncc to v0.38.4 ([#418](https://github.com/cric96/inline-mermaid/issues/418)) ([8e81a60](https://github.com/cric96/inline-mermaid/commit/8e81a60a17da09e15d0f7d7be4279793300db746))
+* **deps:** update dependency eslint to v9.36.0 ([#419](https://github.com/cric96/inline-mermaid/issues/419)) ([b7e9f28](https://github.com/cric96/inline-mermaid/commit/b7e9f28b752640732a5b26a9ccde0dc5b3ef20da))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.146 ([#421](https://github.com/cric96/inline-mermaid/issues/421)) ([35950eb](https://github.com/cric96/inline-mermaid/commit/35950eb5f564352753959aac35f0be11bdcc9dbd))
+* **deps:** update node.js to 22.20 ([#422](https://github.com/cric96/inline-mermaid/issues/422)) ([027144e](https://github.com/cric96/inline-mermaid/commit/027144edf789995005d67cade34692240016b873))
+
+### Build and continuous integration
+
+* **deps:** update dependency macos github actions runner to v15 ([#420](https://github.com/cric96/inline-mermaid/issues/420)) ([cced083](https://github.com/cric96/inline-mermaid/commit/cced08391c707aae5c5d158308b121b56b78ebd7))
+
 ## [1.18.0](https://github.com/cric96/inline-mermaid/compare/1.17.0...1.18.0) (2025-09-17)
 
 ### Dependency updates
