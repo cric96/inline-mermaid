@@ -4,7 +4,7 @@
   "description": "Transform and inline mermaid code in svg images!",
   "author": "cric96",
   "dependencies": {
-    "@actions/core": "2.0.3",
+    "@actions/core": "3.0.0",
     "@mermaid-js/mermaid-cli": "11.12.0",
     "@vercel/ncc": "0.38.4",
     "jsdom": "28.0.0",
