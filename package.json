@@ -10,7 +10,7 @@
     "jsdom": "29.1.0",
     "jsonpath-plus": "10.4.0",
     "path": "0.12.7",
-    "puppeteer": "23.11.1",
+    "puppeteer": "24.42.0",
     "recursive-path-finder-regexp": "0.3.0",
     "temp": "0.9.4",
     "toml": "4.1.1"
