@@ -6,7 +6,7 @@
   "dependencies": {
     "@actions/core": "2.0.3",
     "@mermaid-js/mermaid-cli": "11.15.0",
-    "@vercel/ncc": "0.38.4",
+    "@vercel/ncc": "0.43.0",
     "jsdom": "29.1.1",
     "jsonpath-plus": "10.4.0",
     "path": "0.12.7",
