@@ -1,3 +1,24 @@
+## [1.22.0](https://github.com/cric96/inline-mermaid/compare/1.21.0...1.22.0) (2026-07-03)
+
+### Dependency updates
+
+* **api-deps:** update dependency @mermaid-js/mermaid-cli to v11.16.0 ([#498](https://github.com/cric96/inline-mermaid/issues/498)) ([1eca606](https://github.com/cric96/inline-mermaid/commit/1eca6069ed4971105566403d4e33b7e5f5caa4d1))
+* **deps:** update dependency @vercel/ncc to v0.43.0 ([#490](https://github.com/cric96/inline-mermaid/issues/490)) ([b60c7a7](https://github.com/cric96/inline-mermaid/commit/b60c7a725d180ece20c32df17e006a40ffe8080d))
+* **deps:** update dependency @vercel/ncc to v0.44.0 ([#491](https://github.com/cric96/inline-mermaid/issues/491)) ([c8a4400](https://github.com/cric96/inline-mermaid/commit/c8a4400bf70b5bb5db8fb6dc040133a7cfb70556))
+* **deps:** update dependency @vercel/ncc to v0.44.1 ([#497](https://github.com/cric96/inline-mermaid/issues/497)) ([81e1661](https://github.com/cric96/inline-mermaid/commit/81e16615ae13e1730e0628fdcecba8039b635746))
+* **deps:** update dependency eslint to v10.4.0 ([#486](https://github.com/cric96/inline-mermaid/issues/486)) ([4a3912c](https://github.com/cric96/inline-mermaid/commit/4a3912c69e0c11c9c70aa040cd590ff15d8b6296))
+* **deps:** update dependency eslint to v10.4.1 ([#488](https://github.com/cric96/inline-mermaid/issues/488)) ([79f416e](https://github.com/cric96/inline-mermaid/commit/79f416ee58f15712a0fdd757d63931c0c178126b))
+* **deps:** update dependency eslint to v10.6.0 ([#496](https://github.com/cric96/inline-mermaid/issues/496)) ([4df1e63](https://github.com/cric96/inline-mermaid/commit/4df1e63d615c0be2ac2f3f1cf0e4bc4364fb4df2))
+* **deps:** update eslint monorepo to v10.5.0 ([#492](https://github.com/cric96/inline-mermaid/issues/492)) ([55f7e5d](https://github.com/cric96/inline-mermaid/commit/55f7e5d436657854687479c33d5b46a4175f711b))
+* **deps:** update node.js to 24.16 ([#487](https://github.com/cric96/inline-mermaid/issues/487)) ([ce045f0](https://github.com/cric96/inline-mermaid/commit/ce045f020bf734685159f439f4afa95d63fed085))
+* **deps:** update node.js to 24.17 ([#494](https://github.com/cric96/inline-mermaid/issues/494)) ([3c714b8](https://github.com/cric96/inline-mermaid/commit/3c714b856e8b2e84f475e3585829abf7cdd459bd))
+* **deps:** update node.js to 24.18 ([#495](https://github.com/cric96/inline-mermaid/issues/495)) ([8f351a1](https://github.com/cric96/inline-mermaid/commit/8f351a1411ad2dee10bdcc5867b52fbb149921a6))
+
+### Build and continuous integration
+
+* **deps:** update actions/checkout action to v6.0.3 ([#489](https://github.com/cric96/inline-mermaid/issues/489)) ([21e33c1](https://github.com/cric96/inline-mermaid/commit/21e33c1903b2fdac691b8974b16c6d515db37e66))
+* **deps:** update actions/checkout action to v7 ([#493](https://github.com/cric96/inline-mermaid/issues/493)) ([2cf0098](https://github.com/cric96/inline-mermaid/commit/2cf0098211491c6b9283dcc03affd4b1a7c8b3df))
+
 ## [1.21.0](https://github.com/cric96/inline-mermaid/compare/1.20.0...1.21.0) (2026-05-17)
 
 ### Dependency updates
