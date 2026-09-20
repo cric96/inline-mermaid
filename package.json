@@ -7,7 +7,7 @@
     "@actions/core": "2.0.3",
     "@mermaid-js/mermaid-cli": "11.17.0",
     "@vercel/ncc": "0.45.0",
-    "jsdom": "30.0.1",
+    "jsdom": "30.1.0",
     "jsonpath-plus": "10.4.0",
     "path": "0.12.7",
     "puppeteer": "25.11.0",
