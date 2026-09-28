@@ -1,3 +1,17 @@
+## [1.24.0](https://github.com/cric96/inline-mermaid/compare/1.23.0...1.24.0) (2026-09-28)
+
+### Dependency updates
+
+* **api-deps:** update dependency @mermaid-js/mermaid-cli to v12 ([#532](https://github.com/cric96/inline-mermaid/issues/532)) ([1b0cb40](https://github.com/cric96/inline-mermaid/commit/1b0cb409981b42b41b35472e82f4cfec4e329438))
+* **deps:** update dependency eslint to v10.10.0 ([#525](https://github.com/cric96/inline-mermaid/issues/525)) ([c4c50be](https://github.com/cric96/inline-mermaid/commit/c4c50becbbbef922836ae3dff87c192d1d6dd0ac))
+* **deps:** update dependency eslint to v10.11.0 ([#529](https://github.com/cric96/inline-mermaid/issues/529)) ([26936a0](https://github.com/cric96/inline-mermaid/commit/26936a0f712b476bd32e8baca6a3a45e17697279))
+* **deps:** update dependency jsdom to v30.1.0 ([#528](https://github.com/cric96/inline-mermaid/issues/528)) ([cffc2a8](https://github.com/cric96/inline-mermaid/commit/cffc2a810d4144e0ab279d1149033218862a30fe))
+* **deps:** update dependency jsdom to v30.1.1 ([#530](https://github.com/cric96/inline-mermaid/issues/530)) ([658dd06](https://github.com/cric96/inline-mermaid/commit/658dd06821ab13824f0de6d8e17ba84cfc0bf0f1))
+* **deps:** update dependency puppeteer to v25.10.0 ([#524](https://github.com/cric96/inline-mermaid/issues/524)) ([11ad814](https://github.com/cric96/inline-mermaid/commit/11ad81439558ac598aa5c6cc8b11516410df073a))
+* **deps:** update dependency puppeteer to v25.11.0 ([#527](https://github.com/cric96/inline-mermaid/issues/527)) ([d2773f1](https://github.com/cric96/inline-mermaid/commit/d2773f1e12dcc4965b46c3eff0710412b74c5822))
+* **deps:** update dependency puppeteer to v25.12.0 ([#531](https://github.com/cric96/inline-mermaid/issues/531)) ([10c1db5](https://github.com/cric96/inline-mermaid/commit/10c1db504a1d13b0ba03de0226ae57912476bcad))
+* **deps:** update node.js to 24.21 ([#526](https://github.com/cric96/inline-mermaid/issues/526)) ([99f5833](https://github.com/cric96/inline-mermaid/commit/99f5833c819290915984b988f6e4345954f12e58))
+
 ## [1.23.0](https://github.com/cric96/inline-mermaid/compare/1.22.0...1.23.0) (2026-09-05)
 
 ### Dependency updates
