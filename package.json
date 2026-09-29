@@ -8,7 +8,7 @@
     "@mermaid-js/mermaid-cli": "12.0.0",
     "@vercel/ncc": "0.45.0",
     "jsdom": "30.1.1",
-    "jsonpath-plus": "10.4.0",
+    "jsonpath-plus": "11.1.0",
     "path": "0.12.7",
     "puppeteer": "25.12.0",
     "recursive-path-finder-regexp": "0.3.0",
