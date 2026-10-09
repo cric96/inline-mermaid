@@ -26,6 +26,7 @@ jobs:
       - name: Unit tests
         run: |
           npm install
+          npm run lint
           npm test
       - name: Test action
         uses: ./

@@ -40,7 +40,8 @@ const tomlConfiguration =
   loadMermaidConfig(tomlFile, cssFilePassed, configPath);
 // Main functions
 /**
- * Retrieve all index.html files starting from `dirName` and convert each mermaid code into SVG code.
+ * Retrieve all index.html files starting from `dirName`
+ * and convert each mermaid code into SVG code.
  * NB! Rewrites the index files it finds!
  * @param {String} dirName - The root directory in which the search will occur.
  */
