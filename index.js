@@ -1,34 +1,11 @@
 import {promises} from 'fs';
 import {JSDOM} from 'jsdom';
-import {JSONPath} from 'jsonpath-plus';
-import toml from 'toml';
 import core from '@actions/core';
 import find from 'recursive-path-finder-regexp';
-import {inlineSvgInPage} from './lib.js';
+import {inlineSvgInPage, loadMermaidConfig} from './lib.js';
 
 // Utility functions
 const zip = (a, b) => a.map((k, i) => [k, b[i]]);
-
-/**
- * Load the mermaid configuration from a reveal-hugo toml configuration.
- * @param {String} dirName - The folder in which the configuration is located.
- * @param {String} cssFile - The CSS file used for the mermaid configuration.
- * @param {String} configPath - The regex path of json-path-all to retrieve the mermaid configuration.
- * @return {Object} - The configuration for the mermaid CLI.
- */
-async function getMarmaidFromToml(dirName, cssFile, configPath) {
-  const config = await promises.readFile(dirName);
-  const data = await toml.parse(config.toString());
-  const json = JSON.parse(JSON.stringify(data));
-  const mermaidJson = new JSONPath({path: configPath, json});
-  return {
-    parseMMDOptions: {
-      backgroundColor: 'trasparent',
-      mermaidConfig: mermaidJson,
-      myCss: cssFile,
-    },
-  };
-}
 
 // Constants
 const baseRegex = process.env.fileRegex;
@@ -52,7 +29,7 @@ const cssFile = find(
       isAbsoluteResultsPath: true,
     },
 );
-if (cssFile && cssFile.length > 2) {
+if (cssFile && cssFile.length > 1) {
   core.setFailed(`
     The regex: ${cssRegex} match more then one file: \n  ${cssFile.join('\n')}`,
   );
@@ -60,7 +37,7 @@ if (cssFile && cssFile.length > 2) {
 
 const cssFilePassed = cssFile && cssFile.length == 1 ? cssFile[0] : undefined;
 const tomlConfiguration =
-  getMarmaidFromToml(tomlFile, cssFilePassed, configPath);
+  loadMermaidConfig(tomlFile, cssFilePassed, configPath);
 // Main functions
 /**
  * Retrieve all index.html files starting from `dirName` and convert each mermaid code into SVG code.

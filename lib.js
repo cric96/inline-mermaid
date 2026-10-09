@@ -1,6 +1,8 @@
 import {promises} from 'fs';
 import temp from 'temp';
 import path from 'path';
+import toml from 'toml';
+import {JSONPath} from 'jsonpath-plus';
 import {run} from '@mermaid-js/mermaid-cli';
 
 // Initialization
@@ -8,6 +10,32 @@ temp.track(); // manage clean of temporary file
 
 // Prefix of the ids assigned to the generated SVGs
 const svgIdPrefix = 'inline-mermaid-';
+
+/**
+ * Load the mermaid configuration from a reveal-hugo toml configuration.
+ * @param {String} tomlFile - The toml file containing the configuration.
+ * @param {String} cssFile - The CSS file used to style the diagrams (optional).
+ * @param {String} configPath - The JSONPath of the mermaid configuration.
+ * @return {Object} - The configuration for the mermaid CLI.
+ */
+export async function loadMermaidConfig(tomlFile, cssFile, configPath) {
+  const config = await promises.readFile(tomlFile);
+  const json = toml.parse(config.toString());
+  // wrap: false returns the matched object rather than an array of matches
+  const mermaidConfig = {
+    ...JSONPath({path: configPath, json, wrap: false}),
+  };
+  if (cssFile) {
+    // same as the --cssFile option of the mermaid CLI
+    mermaidConfig.themeCSS = (await promises.readFile(cssFile)).toString();
+  }
+  return {
+    parseMMDOptions: {
+      backgroundColor: 'transparent',
+      mermaidConfig,
+    },
+  };
+}
 
 /**
  * Given an HTML page, inline each mermaid code into an SVG.
