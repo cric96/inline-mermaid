@@ -24,6 +24,7 @@
     "node": "24.21"
   },
   "scripts": {
-    "_prepare": "ncc build postprocessing.js -o dist --license licenses.txt"
+    "_prepare": "ncc build postprocessing.js -o dist --license licenses.txt",
+    "test": "node --test"
   }
 }

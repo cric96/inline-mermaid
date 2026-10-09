@@ -19,6 +19,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7.0.1
+      - name: Install Node
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version-file: package.json
+      - name: Unit tests
+        run: |
+          npm install
+          npm test
       - name: Test action
         uses: ./
         with:

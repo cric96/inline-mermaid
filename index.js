@@ -1,15 +1,10 @@
 import {promises} from 'fs';
 import {JSDOM} from 'jsdom';
 import {JSONPath} from 'jsonpath-plus';
-import temp from 'temp';
-import path from 'path';
 import toml from 'toml';
 import core from '@actions/core';
-import {run} from '@mermaid-js/mermaid-cli';
 import find from 'recursive-path-finder-regexp';
-
-// Initialization
-temp.track(); // manage clean of temporary file
+import {inlineSvgInPage} from './lib.js';
 
 // Utility functions
 const zip = (a, b) => a.map((k, i) => [k, b[i]]);
@@ -81,8 +76,11 @@ async function rewritePages(dirName) {
     return JSDOM.fromFile(file);
   }));
   // for each index, convert mermaid specification into plain svg code
-  for (const element of zip(files, fileLoaded)) {
-    await inlineSvgInPage(...element);
+  const mermaidConfig = await tomlConfiguration;
+  for (const [file, page] of zip(files, fileLoaded)) {
+    await inlineSvgInPage(page, mermaidConfig);
+    // produce the side effect, i.e., writing the page with the svg inlined
+    await promises.writeFile(file, page.serialize());
   }
 }
 
@@ -100,72 +98,5 @@ async function getHtmlIndexes(dirName) {
       },
   );
 }
-/**
- * Given an HTML page, inline each mermaid code into an SVG.
- * NB! Produces a side effect by rewriting the `fileName` passed.
- * @param {String} fileName - The file that will be transformed.
- * @param {*} page - The JSDOM representation of the file passed.
- */
-async function inlineSvgInPage(fileName, page) {
-  // Find all mermaid code
-  const mermaidContent = page.window.document.querySelectorAll('.mermaid');
-  const elementsToUpdate = Array.from(mermaidContent)
-  // transfrom only the class that are not already transformed
-      .filter((element) => element.attributes['data-processed'] === undefined);
-
-  for (const element of elementsToUpdate) {
-    // convert the mermaid code to svg code
-    const svgContent = await getSvg(element);
-    // put the svg code inside the mermaid div
-    element.innerHTML = svgContent;
-    // mark as already processed (mermaid.js will not process again)
-    element.setAttribute('data-processed', 'true');
-    // mark the div as pre-rendered
-    element.setAttribute('pre-rendered', 'true');
-  }
-  // produce the side effect, i.e., writing the page with the svg inlined
-  promises.writeFile(fileName, page.serialize());
-}
-
-/**
- * Given a div with mermaid code, extract the SVG representation using mermaid-cli.
- * @param {HTMLElement} element - The div tag with the mermaid code.
- * @return {String} - The SVG representation of the given mermaid code.
- */
-async function getSvg(element) {
-  // get the configuration from hugo toml
-  const mermaidConfig = await tomlConfiguration;
-  // Disable the Puppeteer sandbox
-  mermaidConfig.puppeteerConfig = {
-    args: ["--no-sandbox"]
-  };  
-  // temp file for file input (mermaid code)
-  const htmlTemp = await temp.open({prefix: 'html-append', suffix: '.md'});
-  // temp file for file output (svg)
-  const svgTemp = await temp.open({prefix: 'svg-temp', suffix: '.svg'});
-  const svgFilePath = path.parse(svgTemp.path);
-  // prepare mermaid md
-  const mermaidContent = '```mermaid\n' + element.textContent + '```';
-  console.log(htmlTemp.path);
-  try {
-    // write the mermaid code inside the temp file
-    const svgContent = await promises.writeFile(htmlTemp.path, mermaidContent)
-        // call mermaid cli to transform mermaid code into svg
-        .then(() => run(htmlTemp.path, svgTemp.path, mermaidConfig))
-        // get the svg content
-        .then(() => promises.readFile(
-            svgFilePath.dir + '/' + svgFilePath.name + '-1.svg',
-        ));
-    return svgContent.toString();
-  } catch (error) {
-    throw Error(
-        `Inline mermaid failed, mermaid content: \n` +
-          `${mermaidContent} \n` +
-          `cause: \n ${error}`,
-        {cause: error},
-    );
-  }
-}
-
 rewritePages(baseFolder)
     .then((value) => console.log('Page rewriting complete!'));
