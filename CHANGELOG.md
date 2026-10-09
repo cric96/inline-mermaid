@@ -1,3 +1,21 @@
+## [1.24.1](https://github.com/cric96/inline-mermaid/compare/1.24.0...1.24.1) (2026-10-09)
+
+### Dependency updates
+
+* **deps:** update dependency eslint to v10.12.0 ([#535](https://github.com/cric96/inline-mermaid/issues/535)) ([05ff2d7](https://github.com/cric96/inline-mermaid/commit/05ff2d720cc11476aad813a4f0ae1ea615473da2))
+* **deps:** update dependency jsdom to v30.1.2 ([#536](https://github.com/cric96/inline-mermaid/issues/536)) ([925240a](https://github.com/cric96/inline-mermaid/commit/925240a9dc7cc011b5aafccd9e617d9fd747460b))
+* **deps:** update dependency jsonpath-plus to v11 ([#533](https://github.com/cric96/inline-mermaid/issues/533)) ([e496376](https://github.com/cric96/inline-mermaid/commit/e496376ab6993e8495ca6645b6276968050335d1))
+* **deps:** update dependency jsonpath-plus to v11.1.1 ([#534](https://github.com/cric96/inline-mermaid/issues/534)) ([01738cc](https://github.com/cric96/inline-mermaid/commit/01738cc7c6f73773a61783c638a34dae2b98cbbf))
+
+### Bug Fixes
+
+* assign a unique id to each inlined mermaid svg ([c64b2af](https://github.com/cric96/inline-mermaid/commit/c64b2af8cf43aeba87bd462d4dfa96e3bdfb9209))
+* pass the toml mermaid configuration and css to mermaid ([beb10b9](https://github.com/cric96/inline-mermaid/commit/beb10b9bf97885fbe8660153db855e5f9a63173e))
+
+### Build and continuous integration
+
+* **deps:** update actions/setup-node action to v7.1.0 ([#537](https://github.com/cric96/inline-mermaid/issues/537)) ([e1a57f8](https://github.com/cric96/inline-mermaid/commit/e1a57f8d5747f3bfc60500462f14f9ccdcd66c1d))
+
 ## [1.24.0](https://github.com/cric96/inline-mermaid/compare/1.23.0...1.24.0) (2026-09-28)
 
 ### Dependency updates
