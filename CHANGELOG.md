@@ -1,3 +1,29 @@
+## [1.24.2](https://github.com/cric96/inline-mermaid/compare/1.24.1...1.24.2) (2026-10-25)
+
+### Dependency updates
+
+* **deps:** update dependency eslint to v10.13.0 ([#546](https://github.com/cric96/inline-mermaid/issues/546)) ([728461e](https://github.com/cric96/inline-mermaid/commit/728461ec506625b94f701b4ce05497f63ee5c20f))
+* **deps:** update dependency globals to v17.13.0 ([#538](https://github.com/cric96/inline-mermaid/issues/538)) ([5034149](https://github.com/cric96/inline-mermaid/commit/5034149ee5c1a3d55a82f4fb282a6cacde376e05))
+* **deps:** update dependency jsdom to v30.1.3 ([#545](https://github.com/cric96/inline-mermaid/issues/545)) ([cab5044](https://github.com/cric96/inline-mermaid/commit/cab50448d46e372da7e792e8f4dae1a2ac888090))
+* **deps:** update dependency jsonpath-plus to v11.2.0 ([#539](https://github.com/cric96/inline-mermaid/issues/539)) ([39a0c35](https://github.com/cric96/inline-mermaid/commit/39a0c3566ed50bcda6148e636a09f6ce4accae4b))
+* **deps:** update dependency jsonpath-plus to v11.2.1 ([#542](https://github.com/cric96/inline-mermaid/issues/542)) ([9c7d9c2](https://github.com/cric96/inline-mermaid/commit/9c7d9c2a5fdc4317fdb5f41bedd580250e66132f))
+* **deps:** update dependency puppeteer to v25.13.0 ([#540](https://github.com/cric96/inline-mermaid/issues/540)) ([b800fe7](https://github.com/cric96/inline-mermaid/commit/b800fe78d01bae12d2a023337e7025f7fce91004))
+* **deps:** update dependency puppeteer to v25.14.0 ([#544](https://github.com/cric96/inline-mermaid/issues/544)) ([7cecdbd](https://github.com/cric96/inline-mermaid/commit/7cecdbd3a834604e974360d5b31eb965c7e9c702))
+* **deps:** update dependency puppeteer to v25.15.0 ([#549](https://github.com/cric96/inline-mermaid/issues/549)) ([35bc97d](https://github.com/cric96/inline-mermaid/commit/35bc97d79db61bd55e5b6fe58426522f26353555))
+* **deps:** update dependency puppeteer to v25.16.0 ([#550](https://github.com/cric96/inline-mermaid/issues/550)) ([ee6a47d](https://github.com/cric96/inline-mermaid/commit/ee6a47dab887863776e8dfbc3f9634ba77988e2a))
+* **deps:** update dependency toml to v5.0.1 ([#541](https://github.com/cric96/inline-mermaid/issues/541)) ([00c795a](https://github.com/cric96/inline-mermaid/commit/00c795a3b677813c9980319e760c7b7728522318))
+* **deps:** update node.js to 24.22 ([#543](https://github.com/cric96/inline-mermaid/issues/543)) ([676b037](https://github.com/cric96/inline-mermaid/commit/676b037d379fabd9e93f746da2a6204e1dddcede))
+
+### Bug Fixes
+
+* scope the stylesheets embedded in the inlined SVGs ([88135e7](https://github.com/cric96/inline-mermaid/commit/88135e7aafaef0ae49b699608bc4f13d2e131a07))
+
+### Build and continuous integration
+
+* **deps:** update dependency macos github actions runner to v26 ([#547](https://github.com/cric96/inline-mermaid/issues/547)) ([11058c9](https://github.com/cric96/inline-mermaid/commit/11058c9d9708571fd9e948abd04c79a85445d53f))
+* **deps:** update dependency ubuntu github actions runner to v26 ([#548](https://github.com/cric96/inline-mermaid/issues/548)) ([8a53a4d](https://github.com/cric96/inline-mermaid/commit/8a53a4dff17d8153f7ee233c5516cceba04c4277))
+* migrate eslint to the flat config and lint in CI ([2c0974b](https://github.com/cric96/inline-mermaid/commit/2c0974bbeb8fbd9c4bf46f8c35f1de11ffef47d0))
+
 ## [1.24.1](https://github.com/cric96/inline-mermaid/compare/1.24.0...1.24.1) (2026-10-09)
 
 ### Dependency updates
