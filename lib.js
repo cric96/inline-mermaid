@@ -4,12 +4,16 @@ import path from 'path';
 import toml from 'toml';
 import {JSONPath} from 'jsonpath-plus';
 import {run} from '@mermaid-js/mermaid-cli';
+import {parse, generate, walk} from 'css-tree';
 
 // Initialization
 temp.track(); // manage clean of temporary file
 
 // Prefix of the ids assigned to the generated SVGs
 const svgIdPrefix = 'inline-mermaid-';
+
+// Selectors of the document root, rewritten as the SVG when scoping a style
+const rootSelectors = new Set(['root', 'host', 'html', 'body']);
 
 /**
  * Load the mermaid configuration from a reveal-hugo toml configuration.
@@ -62,6 +66,10 @@ export async function inlineSvgInPage(page, mermaidConfig) {
     const svgContent = await getSvg(element.textContent, mermaidConfig, svgId);
     // put the svg code inside the mermaid div
     element.innerHTML = svgContent;
+    // the styles inside the svg apply to the whole page: confine them to it
+    element.querySelectorAll('style').forEach((style) => {
+      style.textContent = scopeCss(style.textContent, svgId);
+    });
     // mark as already processed (mermaid.js will not process again)
     element.setAttribute('data-processed', 'true');
     // mark the div as pre-rendered
@@ -108,4 +116,74 @@ export async function getSvg(code, mermaidConfig, svgId) {
         {cause: error},
     );
   }
+}
+
+/**
+ * Scope a stylesheet to the element with the given id.
+ * Mermaid scopes its own styles, but mermaid-cli also embeds whole
+ * third-party stylesheets (e.g., Font Awesome, KaTeX) used by the diagram,
+ * which, once inlined, would restyle the rest of the page.
+ * Selectors already starting from the element are left untouched,
+ * selectors of the document root (e.g., `:root`) are rewritten as the element,
+ * and the other selectors are restricted to the element's descendants.
+ * At-rules that cannot be scoped (e.g., `@font-face`, `@keyframes`)
+ * are left global.
+ * @param {String} css - The stylesheet.
+ * @param {String} id - The id of the element the stylesheet is scoped to.
+ * @return {String} - The scoped stylesheet.
+ */
+export function scopeCss(css, id) {
+  // comments are dropped by the generator, but may contain licenses
+  const comments = [];
+  const ast = parse(css, {
+    onComment: (comment) => comments.push(`/*${comment}*/`),
+  });
+  let changed = false;
+  walk(ast, {
+    visit: 'Rule',
+    enter(rule) {
+      const isKeyframe = this.atrule?.name.toLowerCase().endsWith('keyframes');
+      if (isKeyframe || rule.prelude.type !== 'SelectorList') {
+        return;
+      }
+      rule.prelude.children.forEach((selector) => {
+        changed = scopeSelector(selector, id) || changed;
+      });
+    },
+  });
+  // already scoped stylesheets (e.g., mermaid's own) are kept as they are
+  return changed ? [...comments, generate(ast)].join('\n') : css;
+}
+
+/**
+ * Scope, in place, a single selector to the element with the given id.
+ * @param {Object} selector - The css-tree Selector node.
+ * @param {String} id - The id of the element the selector is scoped to.
+ * @return {Boolean} - Whether the selector was changed.
+ */
+function scopeSelector(selector, id) {
+  const nodes = selector.children;
+  // the first compound selector, i.e., up to the first combinator
+  const firstCompound = [];
+  for (let item = nodes.head; item && item.data.type !== 'Combinator';
+    item = item.next) {
+    firstCompound.push(item);
+  }
+  const isScoped = firstCompound.some(({data}) =>
+    data.type === 'IdSelector' && data.name === id);
+  if (isScoped) {
+    return false;
+  }
+  const scope = {type: 'IdSelector', name: id};
+  const roots = firstCompound.filter(({data}) =>
+    ['PseudoClassSelector', 'TypeSelector'].includes(data.type) &&
+      rootSelectors.has(data.name.toLowerCase()));
+  if (roots.length > 0) {
+    nodes.replace(roots[0], nodes.createItem(scope));
+    roots.slice(1).forEach((item) => nodes.remove(item));
+  } else {
+    nodes.prependData({type: 'Combinator', name: ' '});
+    nodes.prependData(scope);
+  }
+  return true;
 }

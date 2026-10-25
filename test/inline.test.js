@@ -1,7 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {JSDOM} from 'jsdom';
-import {inlineSvgInPage} from '../lib.js';
+import {parse, generate, walk} from 'css-tree';
+import {inlineSvgInPage, scopeCss} from '../lib.js';
 
 const flowchart = (name) => `
 flowchart LR
@@ -43,4 +44,61 @@ test('every inlined diagram gets unique ids', async () => {
           .textContent,
       'untouched',
   );
+});
+
+test('inlined diagram styles do not leak into the page', async () => {
+  const page = new JSDOM(`<!DOCTYPE html><html><body>
+    <div class="mermaid">
+flowchart LR
+  A -- "fas:fa-link" --> B["fab:fa-github"]
+    </div>
+  </body></html>`);
+  await inlineSvgInPage(page, mermaidConfig);
+  const svg = page.window.document.querySelector('.mermaid > svg');
+  const styles = Array.from(svg.querySelectorAll('style'));
+  // mermaid-cli embeds the Font Awesome stylesheets used by the diagram
+  assert.ok(styles.some((style) => style.textContent.includes('Font Awesome')));
+  for (const style of styles) {
+    walk(parse(style.textContent), {
+      visit: 'Rule',
+      enter(rule) {
+        if (!this.atrule?.name.endsWith('keyframes')) {
+          for (const selector of rule.prelude.children) {
+            assert.match(generate(selector), new RegExp(`^#${svg.id}\\b`));
+          }
+        }
+      },
+    });
+  }
+});
+
+test('stylesheets are scoped to the given id', () => {
+  const css = `/* license */
+@font-face { font-family: "Icons"; src: url(icons.woff2); }
+:root, :host { --icons: "Icons"; }
+.icon, .icon-bold::before { font-family: var(--icons); }
+body .icon { color: red; }
+#scope .node { fill: blue; }
+@keyframes spin { from { rotate: 0deg; } to { rotate: 360deg; } }
+@media (min-width: 10px) { :is(.a, .b) > .c { color: green; } }`;
+  const scoped = scopeCss(css, 'scope');
+  // licenses are preserved
+  assert.match(scoped, /\/\* license \*\//);
+  // at-rules that cannot be scoped are untouched
+  assert.match(scoped, /@font-face\{font-family:"Icons"/);
+  assert.match(scoped, /@keyframes spin\{from\{rotate:0deg\}to\{/);
+  // the document root becomes the scope
+  assert.match(scoped, /#scope,#scope\{--icons: ?"Icons"\}/);
+  assert.match(scoped, /#scope \.icon\{color:red\}/);
+  // the other selectors are restricted to the scope descendants
+  assert.match(scoped, /#scope \.icon,#scope \.icon-bold::before\{/);
+  assert.match(
+      scoped,
+      /@media \(min-width:10px\)\{#scope :is\(\.a,\.b\)>\.c\{/,
+  );
+  // already scoped selectors are left as they are
+  assert.match(scoped, /\}#scope \.node\{fill:blue\}/);
+  // stylesheets that need no scoping are not rewritten
+  const alreadyScoped = '#scope .node {\n  fill: blue;\n}';
+  assert.equal(scopeCss(alreadyScoped, 'scope'), alreadyScoped);
 });
