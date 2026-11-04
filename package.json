@@ -19,7 +19,7 @@
   "devDependencies": {
     "eslint": "10.14.0",
     "eslint-config-google": "0.14.0",
-    "globals": "17.13.0",
+    "globals": "17.14.0",
     "semantic-release-preconfigured-conventional-commits": "1.1.157"
   },
   "engines": {
